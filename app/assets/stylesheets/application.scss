@@ -7,4 +7,18 @@
 
 .dropdown {
 	background-color: #333333;
+	vertical-align: top;
 }
+
+.dropdown-toggle {
+	color: #ecf0f1;
+	background-color: #333333;
+	vertical-align: top;
+	&:hover {
+		color: #ecf0f1;
+		&span {
+			color: #ecf0f1;
+		}
+	}
+}
+
