@@ -52,5 +52,5 @@ test:
 production:
   <<: *default
   database: synergyspace
-  username: synergyspaceadmin
+  username: synergyadmin
   password: synergyspace
