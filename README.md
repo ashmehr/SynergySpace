@@ -3,4 +3,4 @@
 
 Work in progress...
 
-[Link to webapp](synergyspace.akshaymehra.me)
+[Link to webapp](http://synergyspace.akshaymehra.me)
