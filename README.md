@@ -3,5 +3,4 @@
 
 Work in progress...
 
-Link to site:
-http://dev-env-qfu3zyamqq.elasticbeanstalk.com/
+[Link to webapp](synergyspace.akshaymehra.me)
