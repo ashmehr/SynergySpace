@@ -1,2 +1,50 @@
 <%= provide(:title, @user.name) %>
-<p><%= @user.name %>, <%= @user.email %></p>
+
+<div class="container">
+  <div class="jumbotron">
+
+    <h1><%= @user.name %></h1> 
+    <p>Followers: <%= @user.followers_count %></p>
+    <p>Following: <%= @user.follow_count %></p>
+    
+    <!-- Follow -->
+
+    <% if (current_user != @user) %>
+
+    	<% if !current_user.following?(@user) %>
+
+	    	<%= link_to follow_user_path(@user), class: "btn btn-info btn-sm" do %>
+	    		<h6> <span class="glyphicon glyphicon-eye-open" id="logIcon"></span> Follow </h6>
+	    	<% end %>
+		
+	    <% else %>
+
+		    <!-- Unfollow -->
+			<%= link_to unfollow_user_path(@user), class: "btn btn-info btn-sm" do %>
+		    	<h6> <span class="glyphicon glyphicon-eye-close" id="logIcon"></span> Unfollow </h6>
+		    <% end %>
+
+		<% end %>
+	  
+	<% end %>
+
+  </div>
+</div>
+
+
+<% if @user.follow_count != 0 %>
+	<div class="container">
+	  <div class="jumbotron">
+	  	<p> Users that <%= @user.name %> is following </p> 
+	  	<% @followers = @user.all_following %>
+	  	<% @followers.each do |follower| %>
+
+		<div><%= link_to follower, class: "btn btn-default" do %>
+		    <h6 class="glyphicon glyphicon-user"> <%= follower.name %></h6>
+		<% end %></div>
+
+	  	<% end %>
+
+	  </div>
+	</div>
+<% end %>

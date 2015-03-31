@@ -18,6 +18,13 @@ Rails.application.routes.draw do
 
   get 'contact' => 'staticpages#contact'
 
-  resources :users
+  get 'following' => 'users#following'
+
+  resources :users do
+    member do
+      get "follow", to: "users#follow"
+      get "unfollow", to: "users#unfollow"
+    end
+  end
 
 end

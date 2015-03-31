@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   def new
   	@user = User.new
   end
@@ -18,8 +19,34 @@ class UsersController < ApplicationController
   	end
   end
 
-  	private
-  		def user_params
-  			params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  		end
+  def follow
+
+    @user = User.find(params[:id])
+
+    if current_user == @user
+      flash[:error] = "You cannot follow yourself."
+    else
+      current_user.follow(@user)
+      flash[:notice] = "You are now following #{@user.name}"
+    end
+
+    redirect_to :back
+  end
+
+  def unfollow
+    @user = User.find(params[:id])
+
+    if current_user
+      current_user.stop_following(@user)
+      flash[:notice] = "You are no longer following #{@user.name}."
+    end
+
+    redirect_to :back
+  end
+
+	private
+		def user_params
+			params.require(:user).permit(:name, :email, :password, :password_confirmation)
+		end
+
 end
