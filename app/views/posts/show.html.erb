@@ -1,9 +1,11 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+
+<body class="non-home">
+  <div class="container">
+  <div class="jumbotron">
+
+<p id="notice"><%= notice %></p>
+<h1><%= @post.title %></h1>
 
 <p>
   <strong>Address:</strong>
@@ -11,8 +13,8 @@
 </p>
 
 <p>
-  <strong>Postedby:</strong>
-  <%= @post.postedby %>
+  <strong>Owner</strong>
+ <%= User.find(@post.madeby).name %>
 </p>
 
 <p>
@@ -34,6 +36,37 @@
   <strong>Size:</strong>
   <%= @post.size %>
 </p>
-
+Average Rating: <%= rating_for @post, "rating" %>
+    
+Score <%= @post.average("rating").nil? ? '0' : @post.average("rating").avg %>
+    <%= link_to 'Join', join_post_path(@post) %> | 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
+<br/>
+     <div class="container">
+
+    <strong>Users in this workspace</strong>
+      <%@users = User.all%>
+       <ul class="users">
+    <%@users.each do |user| %>
+ 
+
+
+  <% if user.post_id == @post.id %>
+<li>
+  <strong>
+    <%= link_to user.name, user %>
+ 
+    <% end %>
+    </strong>
+</li>
+   <% end %>
+     
+            </ul>
+          	</div> 
+
+      	</div>
+</div>
+
+
+</body>

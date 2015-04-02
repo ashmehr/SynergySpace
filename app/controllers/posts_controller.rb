@@ -4,9 +4,24 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    if params[:search]
+      @posts = Post.search(params[:search]).order("created_at DESC")
+    else
+      @posts = Post.order("created_at DESC")
+    end
   end
 
+def join
+  @post= Post.find params[:id]
+  current_user.update_attribute(:post_id, @post.id)
+  redirect_to @post
+end
+  
+def leave
+  @post= Post.find params[:id]
+  current_user.update_attribute(:post_id, nil)
+  redirect_to @post
+end
   # GET /posts/1
   # GET /posts/1.json
   def show
@@ -25,7 +40,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
+    @post.madeby = current_user.id
+    @post.postedby = current_user
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }

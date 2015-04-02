@@ -2,11 +2,14 @@ class User < ActiveRecord::Base
 
 	acts_as_followable
 	acts_as_follower
+  ratyrate_rater
 
-	has_many :posts
+  belongs_to :teams
+
+
 	attr_accessor :remember_token
 	before_save {self.email = email.downcase}
-	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/
 	validates :name, presence: true, length: {maximum: 50}
 	
 	validates :email, presence: true, length: {maximum: 255}, uniqueness: {case_sensitive: false}, format: {with: VALID_EMAIL_REGEX}
@@ -35,4 +38,8 @@ class User < ActiveRecord::Base
 		return false if remember_digest.nil?
 		BCrypt::Password.new(remember_digest) == remember_token
 	end
+    def self.search(query)
+    # where(:title, query) -> This would return an exact match of the query
+      where("name like ?", "%#{query}%") 
+  end
 end

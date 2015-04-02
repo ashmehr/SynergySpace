@@ -1,5 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "customcss";
+//= require jquery.raty
+//= require ratyrate
+body.non-home{
+      background-image: url("fresh_snow.png");
+}
 
 #map {
 	height: 100vh;
@@ -23,7 +29,13 @@
 }
 
 .jumbotron {
-	background-color: transparent;
+  text-align: left;
+    margin-bottom: 0px;
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+	  background-color: transparent;
+
 }
 
 .btn-default{

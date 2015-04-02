@@ -1,5 +1,5 @@
 <%= provide(:title, @user.name) %>
-
+<body class="non-home">
 <div class="container">
   <div class="jumbotron">
 
@@ -48,3 +48,42 @@
 	  </div>
 	</div>
 <% end %>
+	<div class="container">
+    <h1>Workspaces that belong to this User</h1>
+
+   <%@posts = Post.all %>
+  <table style=" border: 2px solid black; width: 100%; ">
+  <thead>
+    <tr>
+      <th style ="padding: 15px;"> Title </th>
+      <th> Address </th>
+ 
+
+      <th> City </th>
+
+      <th> Size </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+    <%if post.madeby == @user.id %>
+      <tr>
+        <td style ="padding: 15px;"><%= post.title %> <br/></td>
+        <td><%= post.address %> <br/></td>
+        
+        <td><%= post.city %> <br/></td>
+        <td><%= post.size %> <br/></td>
+        <td><%= link_to 'Show', post %> <br/></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %> <br/></td>
+        <td><%= link_to 'Join', join_post_path(post) %> <br/></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %> <br/></td>
+        
+      </tr>
+    <% end %>
+     <% end %>
+  </tbody>
+</table>
+  </div>   
+</body>

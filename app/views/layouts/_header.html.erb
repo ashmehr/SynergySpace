@@ -1,12 +1,17 @@
 <div class="dropdown">
+
 <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+
+
 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
 	<li><%= link_to "Home", root_url %></li>
 	<li><%= link_to "About", about_path %></li>
 	<li><%= link_to "Contact", contact_path %></li>
 	<li class="divider"></li>
 	<% if logged_in? %>
-		<li><%= link_to "List Workspace", newpost_path %></li>
+  <li><%= link_to "See All Users", '/users' %></li>
+  <li><%= link_to "See All Workspaces", '/posts' %></li>
+  <li><%= link_to "List New Workspace", newpost_path %></li>
 		<li><%= link_to "Profile", current_user %></li>
 		<li><%= link_to "Log out", logout_path, method: :delete %></li>
 	<% else %>
@@ -14,4 +19,5 @@
 		<li><%= link_to "Sign up", signup_path %></li>
 	<% end %>
 </ul>
+  
 </div>
