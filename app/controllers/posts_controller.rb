@@ -40,11 +40,13 @@ end
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    current_user.update_attribute(:post_id, @post.id)
     @post.madeby = current_user.id
     @post.postedby = current_user
           location = Geocoder.search(@post.address + ',' + @post.city + ',' + @post.country)
     @post.latitude = location[0].latitude
     @post.longitude = location[0].longitude  
+   
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }

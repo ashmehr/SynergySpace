@@ -14,7 +14,8 @@
 
 <p>
   <strong>Owner</strong>
- <%= User.find(@post.madeby).name %>
+  <%@owner = User.find(@post.madeby) %>
+  <%= link_to "#{@owner.name}", @owner %>
 </p>
 
 <p>
@@ -40,6 +41,7 @@ Average Rating: <%= rating_for @post, "rating" %>
     
 Score <%= @post.average("rating").nil? ? '0' : @post.average("rating").avg %>
     <%= link_to 'Join', join_post_path(@post) %> | 
+    <%= link_to 'Leave', leave_post_path(@post) %> | 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
 <br/>
