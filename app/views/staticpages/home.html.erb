@@ -6,13 +6,27 @@
 
 <script type="text/javascript">
 handler = Gmaps.build('Google');
-handler.buildMap({ provider: {
-	backgroundColor: "#333333", 
-	disableDefaultUI: true
-}, internal: {id: 'map'}}, function(){
+handler.buildMap({
+    provider: {
+      	backgroundColor: "#333333",
+      disableDefaultUI: true
+      // pass in other Google Maps API options here
+    },
+    internal: {
+      id: 'map'
+    }
+  },
+  function(){
+     markers = handler.addMarkers(<%=raw @hash.to_json %>);
   handler.map.centerOn([43.653342, -79.384045]);
+    
   handler.getMap().setZoom(13);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-});
+    
+    //handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  }
+);
+ 
+   
+
 </script>
