@@ -3,18 +3,18 @@ function join_workspace(post)
 	var request;
 	if(window.XMLHttpRequest)
 	{
-		xmlhttp = new XMLHttpRequest();
+		request = new XMLHttpRequest();
 	}
 	else
 	{
-		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		request = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 
-	xmlhttp.onreadystatechange = function()
+	request.onreadystatechange = function()
   	{
-	  	if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+	  	if(request.readyState == 4 && request.status == 200)
 	    {
-	    	var response = xmlhttp.responseText;
+	    	var response = request.responseText;
 	    	var start = response.search('<ul class="users">') + 18;
 	    	var end = response.search('</ul>') - 1;
 
@@ -22,8 +22,8 @@ function join_workspace(post)
 	    }
   	}
 
-	xmlhttp.open("GET","/posts/" + post + "/join",true);
-	xmlhttp.send();
+	request.open("GET","/posts/" + post + "/join",true);
+	request.send();
 }
 
 function leave_workspace(post)
@@ -31,18 +31,18 @@ function leave_workspace(post)
 	var request;
 	if(window.XMLHttpRequest)
 	{
-		xmlhttp = new XMLHttpRequest();
+		request = new XMLHttpRequest();
 	}
 	else
 	{
-		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		request = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 
-	xmlhttp.onreadystatechange = function()
+	request.onreadystatechange = function()
   	{
-	  	if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+	  	if(request.readyState == 4 && request.status == 200)
 	    {
-	    	var response = xmlhttp.responseText;
+	    	var response = request.responseText;
 	    	var start = response.search('<ul class="users">') + 18;
 	    	var end = response.search('</ul>') - 1;
 
@@ -50,6 +50,6 @@ function leave_workspace(post)
 	    }
   	}
 
-	xmlhttp.open("GET","/posts/" + post + "/leave",true);
-	xmlhttp.send();
+	request.open("GET","/posts/" + post + "/leave",true);
+	request.send();
 }

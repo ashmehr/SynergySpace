@@ -40,8 +40,8 @@
 Average Rating: <%= rating_for @post, "rating" %>
     
 Score <%= @post.average("rating").nil? ? '0' : @post.average("rating").avg %>
-    <%= link_to 'Join', join_post_path(@post) %> | 
-    <%= link_to 'Leave', leave_post_path(@post) %> | 
+    <input type="button" value="Join" onclick="join_workspace('<%= @post.id %>')">
+    <input type="button" value="Leave" onclick="leave_workspace('<%= @post.id %>')">
     <% if @post.madeby == current_user.name or current_user.admin%>
       <%= link_to 'Edit', edit_post_path(@post) %> |
     <% end %>
