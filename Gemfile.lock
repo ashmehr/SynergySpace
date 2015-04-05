@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/wazery/ratyrate.git
-  revision: 9de2ccaf1cc40c347077f7c55f22c5ff6b087831
+  revision: 59897e0a50a960f84630720c959957520d073d96
   specs:
     ratyrate (1.2.2.alpha)
 
