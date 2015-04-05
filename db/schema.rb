@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402202445) do
+ActiveRecord::Schema.define(version: 20150405002714) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id",      limit: 4
@@ -90,7 +90,8 @@ ActiveRecord::Schema.define(version: 20150402202445) do
     t.string   "remember_digest", limit: 255
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.integer  "post_id"
+    t.integer  "post_id",         limit: 4
+    t.boolean  "admin",           limit: 1
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
