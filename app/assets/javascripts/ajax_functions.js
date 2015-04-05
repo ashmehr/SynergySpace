@@ -14,6 +14,30 @@ function join_workspace(post)
   	{
 	  	if(request.readyState == 4 && request.status == 200)
 	    {
+	    	update_page();
+	    }
+  	}
+
+	request.open("GET","/posts/" + post + "/join",true);
+	request.send();
+}
+
+function update_page()
+{
+	var request;
+	if(window.XMLHttpRequest)
+	{
+		request = new XMLHttpRequest();
+	}
+	else
+	{
+		request = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	request.onreadystatechange = function()
+  	{
+	  	if(request.readyState == 4 && request.status == 200)
+	    {
 	    	var response = request.responseText;
 
 	    	var parser=new DOMParser();
@@ -23,7 +47,7 @@ function join_workspace(post)
 	    }
   	}
 
-	request.open("GET","/posts/" + post + "/join",true);
+	request.open("GET", location.pathname, true);
 	request.send();
 }
 
