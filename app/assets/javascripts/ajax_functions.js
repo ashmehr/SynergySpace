@@ -16,10 +16,10 @@ function join_workspace(post)
 	    {
 	    	var response = request.responseText;
 
-	    	var newElement = document.createElement('div');
-	    	newElement.innerHTML = response;
+	    	var parser=new DOMParser();
+			var htmlDoc=parser.parseFromString(response, "text/html");
 
-	    	document.getElementByClass("users").innerHTML = newElement.getElementByClass("users").innerHTML;
+	    	document.body.innerHTML = htmlDoc.body.innerHTML;
 	    }
   	}
 
@@ -45,10 +45,10 @@ function leave_workspace(post)
 	    {
 	    	var response = request.responseText;
 
-	    	var newElement = document.createElement('div');
-	    	newElement.innerHTML = response;
+	    	var parser=new DOMParser();
+			var htmlDoc=parser.parseFromString(response, "text/html");
 
-	    	document.getElementsByClassName("users").innerHTML = newElement.getElementsByClassName("users").innerHTML;
+	    	document.body.innerHTML = htmlDoc.body.innerHTML;
 	    }
   	}
 
