@@ -18,4 +18,3 @@
 //= require gmaps/google
 //= require_tree .
 //= require jquery.raty
-//= require ratyrate
