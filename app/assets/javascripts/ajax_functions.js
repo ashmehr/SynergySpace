@@ -15,10 +15,11 @@ function join_workspace(post)
 	  	if(request.readyState == 4 && request.status == 200)
 	    {
 	    	var response = request.responseText;
-	    	var start = response.search('<ul class="users">') + 18;
-	    	var end = response.search('</ul>') - 1;
 
-	    	document.getElementByClass("users").innerHtml = response.substring(start, end);
+	    	var newElement = document.createElement('div');
+	    	newElement.innerHTML = response;
+
+	    	document.getElementByClass("users").innerHTML = newElement.getElementByClass("users").innerHTML;
 	    }
   	}
 
@@ -43,10 +44,11 @@ function leave_workspace(post)
 	  	if(request.readyState == 4 && request.status == 200)
 	    {
 	    	var response = request.responseText;
-	    	var start = response.search('<ul class="users">') + 18;
-	    	var end = response.search('</ul>') - 1;
 
-	    	document.getElementByClass("users").innerHtml = response.substring(start, end);
+	    	var newElement = document.createElement('div');
+	    	newElement.innerHTML = response;
+
+	    	document.getElementsByClassName("users").innerHTML = newElement.getElementsByClassName("users").innerHTML;
 	    }
   	}
 
