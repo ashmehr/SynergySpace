@@ -64,7 +64,7 @@ def index
   end
 
   def downvote
-    @user = Post.find(params[:id])
+    @user = User.find(params[:id])
     if current_user.disliked? @user
       @user.unvote_by current_user
     else
