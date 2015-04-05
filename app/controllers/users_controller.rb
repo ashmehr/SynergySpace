@@ -64,13 +64,13 @@ def index
   end
 
   def downvote
-    @post = Post.find(params[:id])
-    if current_user.disliked? @post
-      @post.unvote_by current_user
+    @user = Post.find(params[:id])
+    if current_user.disliked? @user
+      @user.unvote_by current_user
     else
-      @post.downvote_by current_user
+      @user.downvote_by current_user
     end
-    redirect_to @post
+    redirect_to @user
   end
 
 	private
