@@ -12,9 +12,13 @@ class PostsController < ApplicationController
   end
 
 def join
-  @post= Post.find params[:id]
-  current_user.update_attribute(:post_id, @post.id)
-  redirect_to @post
+  if logged_in?
+    @post= Post.find params[:id]
+    current_user.update_attribute(:post_id, @post.id)
+    redirect_to @post
+  else 
+    redirect_to root_path
+  end
 end
   
 def leave

@@ -1,9 +1,10 @@
 
 
+
 <body class="non-home">
   <div class="container">
   <div class="jumbotron">
-
+<% if logged_in? %>
 <p id="notice"><%= notice %></p>
 <h1><%= @post.title %></h1>
 
@@ -68,9 +69,12 @@ Score <%= @post.average("rating").nil? ? '0' : @post.average("rating").avg %>
      
             </ul>
           	</div> 
-
+            <% else %>
+            <p> Not available unless you log in </p>
       	</div>
 </div>
 
 
 </body>
+<% end %>
+  
