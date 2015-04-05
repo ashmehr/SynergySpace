@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use mysql as the database for Active Record
-gem 'ratyrate', :github => 'wazery/ratyrate'
+#gem 'ratyrate', :github => 'wazery/ratyrate'
+gem 'ratyrate'
 gem 'mysql2'
 #Use bootstrap
 gem 'bootstrap-sass', '~> 3.3.3'

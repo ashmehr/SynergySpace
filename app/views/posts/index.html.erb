@@ -48,7 +48,7 @@
         <td><%= post.size %> <br/></td>
         <td><%= link_to 'Show', post %> <br/></td>
          <td><%= link_to 'Join', join_post_path(post) %> <br/></td>
-        <% if post.madeby == current_user.name or current_user.admin%>
+        <% if post.madeby == current_user.id or current_user.admin%>
         <td><%= link_to 'Edit', edit_post_path(post) %> <br/></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %> <br/></td>
         <% end %>
