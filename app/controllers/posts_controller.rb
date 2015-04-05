@@ -93,6 +93,26 @@ end
     end
   end
 
+  def upvote
+    @post = Post.find(params[:id])
+    if current_user.liked? @post
+      @post.unvote_by current_user
+    else
+      @post.upvote_by current_user
+    end
+    redirect_to @post
+  end
+
+  def downvote
+    @post = Post.find(params[:id])
+    if current_user.disliked? @post
+      @post.unvote_by current_user
+    else
+      @post.downvote_by current_user
+    end
+    redirect_to @post
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post

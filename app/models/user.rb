@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
-
+	acts_as_votable
+	acts_as_voter
 	acts_as_followable
 	acts_as_follower
-  ratyrate_rater
 
   belongs_to :teams
 

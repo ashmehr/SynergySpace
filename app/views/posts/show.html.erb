@@ -38,6 +38,19 @@
   <strong>Size:</strong>
   <%= @post.size %>
 </p>
+
+<p>
+  <strong>Likes:</strong>
+  <%= @post.get_likes.size %>
+  <%= link_to "Like", like_post_path(@post), method: :put %>
+</p>
+
+<p>
+  <strong>Dislikes:</strong>
+  <%= @post.get_dislikes.size %>
+  <%= link_to "Dislike", dislike_post_path(@post), method: :put %>
+</p>
+
     <input type="button" value="Join" onclick="join_workspace('<%= @post.id %>')">
     <input type="button" value="Leave" onclick="leave_workspace('<%= @post.id %>')">
     <% if @post.madeby == current_user.id or current_user.admin%>

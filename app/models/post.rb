@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  ratyrate_rateable "rating"
+  acts_as_votable
   belongs_to :user
   has_many :users
 

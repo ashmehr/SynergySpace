@@ -4,8 +4,8 @@
   <div class="jumbotron">
 
     <h1><%= @user.name %></h1> 
-    <p>Followers: <%= @user.followers_count %></p>
-    <p>Following: <%= @user.follow_count %></p>
+    <p><strong>Followers:</strong> <%= @user.followers_count %></p>
+    <p><strong>Following:</strong> <%= @user.follow_count %></p>
     
     <!-- Follow -->
 
@@ -27,6 +27,22 @@
 		<% end %>
 	  
 	<% end %>
+
+      <p>
+      <strong>Likes:</strong>
+      <%= @user.get_likes.size %>
+      <% if current_user != @user %>
+        <%= link_to "Like", like_user_path(@user), method: :put %>
+      <% end %>
+    </p>
+
+    <p>
+      <strong>Dislikes:</strong>
+      <%= @user.get_dislikes.size %>
+      <% if current_user != @user %>
+        <%= link_to "Dislike", dislike_user_path(@user), method: :put %>
+      <% end %>
+    </p>
 
   </div>
 </div>

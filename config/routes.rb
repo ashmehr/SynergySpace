@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  post '/rate' => 'rater#create', :as => 'rate'
   resources :posts  
   
 
@@ -28,6 +27,8 @@ Rails.application.routes.draw do
     member do
       get 'join'
       get 'leave'
+      put "like", to: "posts#upvote"
+      put "dislike", to: "posts#downvote"
     end
   end
   resources :users do
@@ -36,6 +37,8 @@ Rails.application.routes.draw do
       get "unfollow", to: "users#unfollow"
       get 'join', to: "users#join"
       get 'leave', to: "users#leave"
+      put "like", to: "users#upvote"
+      put "dislike", to: "users#downvote"
     end
   end
 

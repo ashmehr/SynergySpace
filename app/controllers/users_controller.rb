@@ -25,6 +25,7 @@ def index
   	end
   end
 
+
   
   
   def follow
@@ -50,6 +51,26 @@ def index
     end
 
     redirect_to :back
+  end
+
+  def upvote
+    @user = User.find(params[:id])
+    if current_user.liked? @user
+      @user.unvote_by current_user
+    else
+      @user.upvote_by current_user
+    end
+    redirect_to @user
+  end
+
+  def downvote
+    @post = Post.find(params[:id])
+    if current_user.disliked? @post
+      @post.unvote_by current_user
+    else
+      @post.downvote_by current_user
+    end
+    redirect_to @post
   end
 
 	private

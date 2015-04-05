@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use mysql as the database for Active Record
-#gem 'ratyrate', :github => 'wazery/ratyrate'
-gem 'ratyrate'
 gem 'mysql2'
 #Use bootstrap
 gem 'bootstrap-sass', '~> 3.3.3'
@@ -31,8 +29,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
+#gem for followers
 gem 'acts_as_follower'
+#gem for voting
+gem 'acts_as_votable'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
