@@ -32,7 +32,7 @@
       <strong>Likes:</strong>
       <%= @user.get_likes.size %>
       <% if current_user != @user %>
-        <%= link_to "Like", like_user_path(@user), method: :put %>
+      <input type="button" value="Like" onclick="like_user('<%= @user.id %>')">
       <% end %>
     </p>
 
@@ -40,7 +40,7 @@
       <strong>Dislikes:</strong>
       <%= @user.get_dislikes.size %>
       <% if current_user != @user %>
-        <%= link_to "Dislike", dislike_user_path(@user), method: :put %>
+      <input type="button" value="Dislike" onclick="dislike_user('<%= @user.id %>')">
       <% end %>
     </p>
 

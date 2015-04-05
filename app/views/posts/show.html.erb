@@ -42,13 +42,13 @@
 <p>
   <strong>Likes:</strong>
   <%= @post.get_likes.size %>
-  <%= link_to "Like", like_post_path(@post), method: :put %>
+  <input type="button" value="Like" onclick="like_post('<%= @post.id %>')">
 </p>
 
 <p>
   <strong>Dislikes:</strong>
   <%= @post.get_dislikes.size %>
-  <%= link_to "Dislike", dislike_post_path(@post), method: :put %>
+  <input type="button" value="Dislike" onclick="dislike_post('<%= @post.id %>')">
 </p>
 
     <input type="button" value="Join" onclick="join_workspace('<%= @post.id %>')">

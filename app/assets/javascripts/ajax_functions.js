@@ -17,7 +17,7 @@ function join_workspace(post)
 	    	var response = request.responseText;
 
 	    	var parser=new DOMParser();
-		var htmlDoc=parser.parseFromString(response, "text/html");
+			var htmlDoc=parser.parseFromString(response, "text/html");
 
 	    	document.body.innerHTML = htmlDoc.body.innerHTML;
 	    }
@@ -27,7 +27,7 @@ function join_workspace(post)
 	request.send();
 }
 
-function like_post()
+function like_post(post)
 {
 	var request;
 	if(window.XMLHttpRequest)
@@ -44,14 +44,19 @@ function like_post()
 	  	if(request.readyState == 4 && request.status == 200)
 	    {
 	    	var response = request.responseText;
+
+	    	var parser=new DOMParser();
+			var htmlDoc=parser.parseFromString(response, "text/html");
+
+	    	document.body.innerHTML = htmlDoc.body.innerHTML;
 	    }
   	}
 
-	request.open("GET", location.pathname, true);
+	request.open("GET", "/posts/" + post + "/like", true);
 	request.send();
 }
 
-function dislike_post()
+function dislike_post(post)
 {
 	var request;
 	if(window.XMLHttpRequest)
@@ -68,14 +73,19 @@ function dislike_post()
 	  	if(request.readyState == 4 && request.status == 200)
 	    {
 	    	var response = request.responseText;
+
+	    	var parser=new DOMParser();
+			var htmlDoc=parser.parseFromString(response, "text/html");
+
+	    	document.body.innerHTML = htmlDoc.body.innerHTML;
 	    }
   	}
 
-	request.open("GET", location.pathname, true);
+	request.open("GET", "/posts/" + post + "/dislike", true);
 	request.send();
 }
 
-function dislike_user()
+function dislike_user(user)
 {
 	var request;
 	if(window.XMLHttpRequest)
@@ -92,14 +102,19 @@ function dislike_user()
 	  	if(request.readyState == 4 && request.status == 200)
 	    {
 	    	var response = request.responseText;
+
+	    	var parser=new DOMParser();
+			var htmlDoc=parser.parseFromString(response, "text/html");
+
+	    	document.body.innerHTML = htmlDoc.body.innerHTML;
 	    }
   	}
 
-	request.open("GET", location.pathname, true);
+	request.open("GET", "/users/" + user + "/dislike", true);
 	request.send();
 }
 
-function like_user()
+function like_user(user)
 {
 	var request;
 	if(window.XMLHttpRequest)
@@ -116,10 +131,15 @@ function like_user()
 	  	if(request.readyState == 4 && request.status == 200)
 	    {
 	    	var response = request.responseText;
+
+	    	var parser=new DOMParser();
+			var htmlDoc=parser.parseFromString(response, "text/html");
+
+	    	document.body.innerHTML = htmlDoc.body.innerHTML;
 	    }
   	}
 
-	request.open("GET", location.pathname, true);
+	request.open("GET", "/users/" + user + "/like", true);
 	request.send();
 }
 
