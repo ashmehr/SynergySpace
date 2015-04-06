@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20150405210401) do
     t.string   "remember_digest", limit: 255
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.integer  "post_id",         limit: 4
+    t.integer  "post_id",         limit: 255
     t.boolean  "admin",           limit: 1
   end
 
